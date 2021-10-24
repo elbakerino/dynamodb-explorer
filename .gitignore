@@ -1,0 +1,30 @@
+# env variables
+.env*
+!.env.example
+
+# default upload dir
+/upload
+
+# default tmp dir
+/tmp
+
+# Composer
+/vendor
+
+/node_modules
+
+8
+supervisord.log
+supervisord.pid
+
+.phpunit.result.cache
+
+# Mac
+.DS_Store
+
+#
+## JetBrains IDE's
+
+.idea/
+*.iml
+*.iws

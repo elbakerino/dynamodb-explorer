@@ -1,0 +1,66 @@
+version: "3.9"
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: php_api
+    environment:
+      env: dev
+      satellite_index_log_perf: "yes"
+      CORS_ORIGINS: "http://localhost:3000,http://localhost:3335"
+      DYNAMO_DB_KEY: key
+      DYNAMO_DB_SECRET: secret
+      DYNAMO_DB_ENDPOINT: http://scylla-m:8000
+    volumes:
+      - ./:/var/www/html
+
+  worker:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: php_worker
+    command: /bin/sh -c "exit 0"
+    environment:
+      env: dev
+      satellite_index_log_perf: "yes"
+      DYNAMO_DB_KEY: key
+      DYNAMO_DB_SECRET: secret
+      DYNAMO_DB_ENDPOINT: http://scylla-m:8000
+    volumes:
+      - ./:/var/www/html
+
+  nginx:
+    build:
+      context: ./_nginx
+      dockerfile: Dockerfile
+    depends_on:
+      - app
+    ports:
+      - '3343:80'
+
+  scylla-m:
+    image: scylladb/scylla
+    volumes:
+      - scylla:/var/lib/scylla
+    command: --authenticator=PasswordAuthenticator --alternator-port=8000 --alternator-write-isolation=always --smp 1
+    ports:
+      - "3345:8000"
+
+  swagger:
+    image: swaggerapi/swagger-ui
+    #image: swaggerapi/swagger-editor
+    environment:
+      #URLS: "[{ url: 'http://localhost:4202/swagger.json', name: 'Orbiter Publish' }]"
+      # for swagger-ui:
+      SWAGGER_JSON: /tmp/swagger.json
+      # for swagger-editor:
+      #SWAGGER_FILE: /tmp/swagger.json
+    ports:
+      - '3344:8080'
+    volumes:
+      - ./web:/tmp:ro
+
+volumes:
+  scylla:

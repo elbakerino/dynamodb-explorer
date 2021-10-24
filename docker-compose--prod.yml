@@ -1,0 +1,51 @@
+version: "3.9"
+
+services:
+  api:
+    image: "bemiteu/dynamodb-explorer-api:${APP_BUILD_VERSION}"
+    build:
+      context: .
+      dockerfile: DockerfileProduction
+      target: php_api
+      cache_from:
+        - bemiteu/dynamodb-explorer-api
+    environment:
+      env: prod
+
+  worker:
+    image: "bemiteu/dynamodb-explorer-worker:${APP_BUILD_VERSION}"
+    build:
+      context: .
+      dockerfile: DockerfileProduction
+      target: php_worker
+      cache_from:
+        # using the latest `app` image also for caching worker base layers,
+        # thus only pulling one image and not two,
+        # the rebuild time for new layers isn't so important as the time to download images
+        # todo: validate caching, in CI it seems to download the same image twice and concurrently
+        - bemiteu/dynamodb-explorer-api
+    environment:
+      env: prod
+
+  app:
+    image: "bemiteu/dynamodb-explorer:${APP_BUILD_VERSION}"
+    build:
+      context: .
+      dockerfile: DockerfileProduction
+      target: php_app
+      cache_from:
+        # using the latest `app` image also for caching worker base layers,
+        # thus only pulling one image and not two,
+        # the rebuild time for new layers isn't so important as the time to download images
+        # todo: validate caching, in CI it seems to download the same image twice and concurrently
+        - bemiteu/dynamodb-explorer-api
+    environment:
+      env: prod
+      DYNAMO_DB_KEY: key
+      DYNAMO_DB_SECRET: secret
+      DYNAMO_DB_ENDPOINT: endpoint-url
+      AUTH_SECRET: s012
+      AUTH_ISSUER: s012
+      APP_SALT: s012
+    ports:
+      - '3343:80'
