@@ -1,0 +1,67 @@
+{
+    "Table": {
+        "AttributeDefinitions": [
+            {
+                "AttributeName": "shared_with",
+                "AttributeType": "S"
+            },
+            {
+                "AttributeName": "data_key",
+                "AttributeType": "S"
+            },
+            {
+                "AttributeName": "uuid",
+                "AttributeType": "S"
+            }
+        ],
+        "TableName": "dyn_explorer",
+        "KeySchema": [
+            {
+                "AttributeName": "uuid",
+                "KeyType": "HASH"
+            },
+            {
+                "AttributeName": "data_key",
+                "KeyType": "RANGE"
+            }
+        ],
+        "TableStatus": "ACTIVE",
+        "CreationDateTime": "2021-10-24T12:42:15+00:00",
+        "TableArn": "arn:scylla:alternator:alternator_dyn_explorer:scylla:table\/dyn_explorer",
+        "TableId": "a0342540-3476-11ec-ab9f-000000000000",
+        "BillingModeSummary": {
+            "BillingMode": "PAY_PER_REQUEST",
+            "LastUpdateToPayPerRequestDateTime": "2021-10-24T12:42:15+00:00"
+        },
+        "GlobalSecondaryIndexes": [
+            {
+                "IndexName": "table_shares",
+                "KeySchema": [
+                    {
+                        "AttributeName": "shared_with",
+                        "KeyType": "HASH"
+                    },
+                    {
+                        "AttributeName": "uuid",
+                        "KeyType": "RANGE"
+                    }
+                ]
+            }
+        ]
+    },
+    "@metadata": {
+        "statusCode": 200,
+        "effectiveUri": "http:\/\/scylla-m:8000",
+        "headers": {
+            "content-length": "763",
+            "content-type": "application\/json",
+            "date": "Sun, 24 Oct 2021 12:42:15 GMT",
+            "server": "Seastar httpd"
+        },
+        "transferStats": {
+            "http": [
+                []
+            ]
+        }
+    }
+}

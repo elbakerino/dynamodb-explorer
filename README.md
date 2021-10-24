@@ -6,6 +6,14 @@
 
 ## Usage
 
+### Public Host
+
+> Use this host with caution, data may be lost any time.
+>
+> `https://dynamodb-explorer.bemit.codes`
+
+### Docker / Own Hoster
+
 There are 3 prebuild Docker images:
 
 - [bemiteu/dynamodb-explorer](https://hub.docker.com/r/bemiteu/dynamodb-explorer), ready to use image to try out and run locally
@@ -48,6 +56,13 @@ docker run -ti --rm \
 # or for custom name:
 php cli dynamo:create dyn_explorer your_table_name
 ```
+
+## Table
+
+Use these exports to explore the used table in the [visualizer](https://dynamodb-visualizer.bemit.codes/)
+
+- [`dynamo-dump--dyn_explorer--schema.json`](./dynamo-dump--dyn_explorer--schema.json), add as `Table Schema`
+- [`dynamo-dump--dyn_explorer--data.json`](./dynamo-dump--dyn_explorer--data.json), add as `Example Data`
 
 ## Repository
 

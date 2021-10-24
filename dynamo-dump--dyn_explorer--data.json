@@ -1,0 +1,535 @@
+{
+    "Items": [
+        {
+            "uuid": {
+                "S": "table#ce93788d-a3f5e-46bb-45d3-5179964502a1"
+            },
+            "data_key": {
+                "S": "shared#user#demo@example.org"
+            },
+            "created_at": {
+                "S": "2021-10-24 12:25:27.666980"
+            },
+            "shared_level": {
+                "S": "owner"
+            },
+            "updated_at": {
+                "S": "2021-10-24 12:25:27.666980"
+            },
+            "shared_with": {
+                "S": "user#demo@example.org"
+            }
+        },
+        {
+            "uuid": {
+                "S": "table#ce93788d-a3f5e-46bb-45d3-5179964502a1"
+            },
+            "data_key": {
+                "S": "v0#color#Process%20Data"
+            },
+            "color_name": {
+                "S": "Process Data"
+            },
+            "color_pk": {
+                "S": "[]"
+            },
+            "color_sk": {
+                "S": "[{\"color\":\"#211f71\",\"comparison\":\"begins_with\",\"search\":\"process\"},{\"color\":\"#3f541d\",\"comparison\":\"begins_with\",\"search\":\"step\"},{\"color\":\"#312d2d\",\"comparison\":\"begins_with\",\"search\":\"log\"}]"
+            },
+            "created_at": {
+                "S": "2021-10-24 12:38:12.370232"
+            },
+            "updated_at": {
+                "S": "2021-10-24 12:38:12.370232"
+            }
+        },
+        {
+            "uuid": {
+                "S": "table#ce93788d-a3f5e-46bb-45d3-5179964502a1"
+            },
+            "data_key": {
+                "S": "v0#color#Process%20Data%20by%20Parent"
+            },
+            "color_name": {
+                "S": "Process Data by Parent"
+            },
+            "color_pk": {
+                "S": "[{\"color\":\"#211f71\",\"comparison\":\"contains\",\"search\":\"#process#\"},{\"color\":\"#3f541d\",\"comparison\":\"contains\",\"search\":\"#step#\"}]"
+            },
+            "color_sk": {
+                "S": "[{\"color\":\"#211f71\",\"comparison\":\"begins_with\",\"search\":\"process\"},{\"color\":\"#3f541d\",\"comparison\":\"begins_with\",\"search\":\"step\"},{\"color\":\"#312d2d\",\"comparison\":\"begins_with\",\"search\":\"log\"}]"
+            },
+            "created_at": {
+                "S": "2021-10-24 12:39:28.882707"
+            },
+            "updated_at": {
+                "S": "2021-10-24 12:39:28.882707"
+            }
+        },
+        {
+            "uuid": {
+                "S": "table#ce93788d-a3f5e-46bb-45d3-5179964502a1"
+            },
+            "data_key": {
+                "S": "v0#exampleData"
+            },
+            "created_at": {
+                "S": "2021-10-24 12:26:06.578894"
+            },
+            "example_items": {
+                "S": "{\"Items\":[]}"
+            },
+            "updated_at": {
+                "S": "2021-10-24 11:51:05.183132"
+            }
+        },
+        {
+            "uuid": {
+                "S": "table#ce93788d-a3f5e-46bb-45d3-5179964502a1"
+            },
+            "data_key": {
+                "S": "v0#meta"
+            },
+            "created_at": {
+                "S": "2021-10-24 12:25:27.666270"
+            },
+            "name": {
+                "S": "queue_step"
+            },
+            "table_meta_name": {
+                "S": "queue_step"
+            },
+            "updated_at": {
+                "S": "2021-10-24 12:25:27.666270"
+            }
+        },
+        {
+            "uuid": {
+                "S": "table#ce93788d-a3f5e-46bb-45d3-5179964502a1"
+            },
+            "data_key": {
+                "S": "v0#preset#hfgjfghgh"
+            },
+            "created_at": {
+                "S": "2021-10-24 12:40:16.372174"
+            },
+            "display_keys": {
+                "S": "[\"log_entry\",\"owner\",\"p_c\",\"p_u\",\"process__step_parent\",\"process_header\",\"process_uuid\",\"queue\",\"s_c\",\"s_u\",\"status\",\"step_dur_event\",\"step_dur_full\",\"step_index\",\"step_label\",\"step_logs\",\"step_logs_lines\",\"step_parent\",\"steps\",\"steps_done\",\"steps_error\",\"trigger_id\",\"updated_at\"]"
+            },
+            "preset_name": {
+                "S": "hfgjfghgh"
+            },
+            "updated_at": {
+                "S": "2021-10-24 12:40:21.525825"
+            }
+        },
+        {
+            "uuid": {
+                "S": "table#ce93788d-a3f5e-46bb-45d3-5179964502a1"
+            },
+            "data_key": {
+                "S": "v0#schema"
+            },
+            "created_at": {
+                "S": "2021-10-24 12:25:58.436514"
+            },
+            "schema": {
+                "S": "{\"Table\":{}}"
+            },
+            "updated_at": {
+                "S": "2021-10-24 11:51:01.500265"
+            }
+        },
+        {
+            "uuid": {
+                "S": "table#cbddb62d-ec83-4451-9e5f-86b2d671be6f"
+            },
+            "data_key": {
+                "S": "shared#user#demo@example.org"
+            },
+            "created_at": {
+                "S": "2021-10-24 12:02:41.707090"
+            },
+            "shared_level": {
+                "S": "owner"
+            },
+            "updated_at": {
+                "S": "2021-10-24 12:02:41.707090"
+            },
+            "shared_with": {
+                "S": "user#demo@example.org"
+            }
+        },
+        {
+            "uuid": {
+                "S": "table#cbddb62d-ec83-4451-9e5f-86b2d671be6f"
+            },
+            "data_key": {
+                "S": "v0#exampleData"
+            },
+            "created_at": {
+                "S": "2021-10-24 12:12:01.502401"
+            },
+            "example_items": {
+                "S": "{\"Items\":[]}"
+            },
+            "updated_at": {
+                "S": "2021-10-24 12:12:01.502401"
+            }
+        },
+        {
+            "uuid": {
+                "S": "table#cbddb62d-ec83-4451-9e5f-86b2d671be6f"
+            },
+            "data_key": {
+                "S": "v0#meta"
+            },
+            "created_at": {
+                "S": "2021-10-24 12:02:41.648662"
+            },
+            "name": {
+                "S": "dyn_explorer"
+            },
+            "table_meta_name": {
+                "S": "dyn_explorer"
+            },
+            "updated_at": {
+                "S": "2021-10-24 12:02:41.648662"
+            }
+        },
+        {
+            "uuid": {
+                "S": "table#cbddb62d-ec83-4451-9e5f-86b2d671be6f"
+            },
+            "data_key": {
+                "S": "v0#schema"
+            },
+            "created_at": {
+                "S": "2021-10-24 12:02:57.577457"
+            },
+            "schema": {
+                "S": "{\"Table\":{}}"
+            },
+            "updated_at": {
+                "S": "2021-10-24 12:02:59.072975"
+            }
+        },
+        {
+            "uuid": {
+                "S": "table#4c78b64f-72ac-4c9e-a4b5-72fcad4c6e9b"
+            },
+            "data_key": {
+                "S": "shared#user#demo@example.org"
+            },
+            "created_at": {
+                "S": "2021-10-24 12:20:43.574074"
+            },
+            "shared_level": {
+                "S": "owner"
+            },
+            "updated_at": {
+                "S": "2021-10-24 12:20:43.574074"
+            },
+            "shared_with": {
+                "S": "user#demo@example.org"
+            }
+        },
+        {
+            "uuid": {
+                "S": "table#4c78b64f-72ac-4c9e-a4b5-72fcad4c6e9b"
+            },
+            "data_key": {
+                "S": "v0#color#Trait%20Details"
+            },
+            "color_name": {
+                "S": "Trait Details"
+            },
+            "color_pk": {
+                "S": "[{\"color\":\"#176567\",\"comparison\":\"begins_with\",\"search\":\"trait#\"}]"
+            },
+            "color_sk": {
+                "S": "[{\"color\":\"#17231a\",\"comparison\":\"begins_with\",\"search\":\"metric#\"},{\"color\":\"#1a2b4c\",\"comparison\":\"begins_with\",\"search\":\"action#\"},{\"color\":\"#691766\",\"comparison\":\"begins_with\",\"search\":\"content#\"}]"
+            },
+            "created_at": {
+                "S": "2021-10-24 12:22:28.045669"
+            },
+            "updated_at": {
+                "S": "2021-10-24 12:22:28.045669"
+            }
+        },
+        {
+            "uuid": {
+                "S": "table#4c78b64f-72ac-4c9e-a4b5-72fcad4c6e9b"
+            },
+            "data_key": {
+                "S": "v0#exampleData"
+            },
+            "created_at": {
+                "S": "2021-10-24 12:21:12.393562"
+            },
+            "example_items": {
+                "S": "{\"Items\":[]}"
+            },
+            "updated_at": {
+                "S": "2021-10-24 12:38:19.304858"
+            }
+        },
+        {
+            "uuid": {
+                "S": "table#4c78b64f-72ac-4c9e-a4b5-72fcad4c6e9b"
+            },
+            "data_key": {
+                "S": "v0#meta"
+            },
+            "created_at": {
+                "S": "2021-10-24 12:20:43.573321"
+            },
+            "name": {
+                "S": "hub_traits"
+            },
+            "table_meta_name": {
+                "S": "hub_traits"
+            },
+            "updated_at": {
+                "S": "2021-10-24 12:20:43.573321"
+            }
+        },
+        {
+            "uuid": {
+                "S": "table#4c78b64f-72ac-4c9e-a4b5-72fcad4c6e9b"
+            },
+            "data_key": {
+                "S": "v0#schema"
+            },
+            "created_at": {
+                "S": "2021-10-24 12:20:57.362669"
+            },
+            "schema": {
+                "S": "{\"Table\":{}}"
+            },
+            "updated_at": {
+                "S": "2021-10-24 12:35:40.200430"
+            }
+        },
+        {
+            "uuid": {
+                "S": "user#demo@example.org"
+            },
+            "data_key": {
+                "S": "v0#meta"
+            },
+            "created_at": {
+                "S": "2021-10-24 12:01:08.942692"
+            },
+            "email": {
+                "S": "demo@example.org"
+            },
+            "passcheck": {
+                "S": "someultrahashstuff932843ty87"
+            },
+            "updated_at": {
+                "S": "2021-10-24 12:10:15.681258"
+            }
+        },
+        {
+            "uuid": {
+                "S": "table#310479ee-c9fe-4d57-925f-fa2c01d63309"
+            },
+            "data_key": {
+                "S": "shared#user#demo@example.org"
+            },
+            "created_at": {
+                "S": "2021-10-24 12:12:07.293426"
+            },
+            "shared_level": {
+                "S": "owner"
+            },
+            "updated_at": {
+                "S": "2021-10-24 12:12:07.293426"
+            },
+            "shared_with": {
+                "S": "user#demo@example.org"
+            }
+        },
+        {
+            "uuid": {
+                "S": "table#310479ee-c9fe-4d57-925f-fa2c01d63309"
+            },
+            "data_key": {
+                "S": "v0#color#Dark%20Night"
+            },
+            "color_name": {
+                "S": "Dark Night"
+            },
+            "color_pk": {
+                "S": "[]"
+            },
+            "color_sk": {
+                "S": "[]"
+            },
+            "created_at": {
+                "S": "2021-10-24 12:12:42.630659"
+            },
+            "updated_at": {
+                "S": "2021-10-24 12:12:42.630659"
+            }
+        },
+        {
+            "uuid": {
+                "S": "table#310479ee-c9fe-4d57-925f-fa2c01d63309"
+            },
+            "data_key": {
+                "S": "v0#color#Good%20Morning"
+            },
+            "color_name": {
+                "S": "Good Morning"
+            },
+            "color_pk": {
+                "S": "[{}]"
+            },
+            "color_sk": {
+                "S": "[]"
+            },
+            "created_at": {
+                "S": "2021-10-24 12:13:11.966264"
+            },
+            "updated_at": {
+                "S": "2021-10-24 12:13:11.966264"
+            }
+        },
+        {
+            "uuid": {
+                "S": "table#310479ee-c9fe-4d57-925f-fa2c01d63309"
+            },
+            "data_key": {
+                "S": "v0#color#Categories%20%2B%20Products"
+            },
+            "color_name": {
+                "S": "Categories + Products"
+            },
+            "color_pk": {
+                "S": "[{\"color\":\"#461717\",\"comparison\":\"begins_with\",\"search\":\"cat\"},{\"color\":\"#101435\",\"comparison\":\"begins_with\",\"search\":\"prod\"}]"
+            },
+            "color_sk": {
+                "S": "[]"
+            },
+            "created_at": {
+                "S": "2021-10-24 12:16:13.896679"
+            },
+            "updated_at": {
+                "S": "2021-10-24 12:16:42.247282"
+            }
+        },
+        {
+            "uuid": {
+                "S": "table#310479ee-c9fe-4d57-925f-fa2c01d63309"
+            },
+            "data_key": {
+                "S": "v0#exampleData"
+            },
+            "created_at": {
+                "S": "2021-10-24 12:12:12.274717"
+            },
+            "example_items": {
+                "S": "{\"Items\":[]}"
+            },
+            "updated_at": {
+                "S": "2021-10-24 12:35:27.100235"
+            }
+        },
+        {
+            "uuid": {
+                "S": "table#310479ee-c9fe-4d57-925f-fa2c01d63309"
+            },
+            "data_key": {
+                "S": "v0#meta"
+            },
+            "created_at": {
+                "S": "2021-10-24 12:12:07.292879"
+            },
+            "name": {
+                "S": "simple_pim"
+            },
+            "table_meta_name": {
+                "S": "simple_pim"
+            },
+            "updated_at": {
+                "S": "2021-10-24 12:12:07.292879"
+            }
+        },
+        {
+            "uuid": {
+                "S": "table#310479ee-c9fe-4d57-925f-fa2c01d63309"
+            },
+            "data_key": {
+                "S": "v0#preset#adfvgf"
+            },
+            "created_at": {
+                "S": "2021-10-24 12:15:21.596896"
+            },
+            "display_keys": {
+                "S": "[\"data\",\"labels\",\"name\",\"product_uuid\",\"sort_key\",\"status\",\"version\",\"versions\"]"
+            },
+            "preset_name": {
+                "S": "adfvgf"
+            },
+            "updated_at": {
+                "S": "2021-10-24 12:15:24.802902"
+            }
+        },
+        {
+            "uuid": {
+                "S": "table#310479ee-c9fe-4d57-925f-fa2c01d63309"
+            },
+            "data_key": {
+                "S": "v0#preset#ddssd"
+            },
+            "created_at": {
+                "S": "2021-10-24 12:15:15.766754"
+            },
+            "display_keys": {
+                "S": "[\"category_uuid\",\"data\",\"labels\",\"name\",\"product_uuid\",\"sort_key\",\"status\",\"updated_at\",\"version\",\"versions\"]"
+            },
+            "preset_name": {
+                "S": "ddssd"
+            },
+            "updated_at": {
+                "S": "2021-10-24 12:15:15.766754"
+            }
+        },
+        {
+            "uuid": {
+                "S": "table#310479ee-c9fe-4d57-925f-fa2c01d63309"
+            },
+            "data_key": {
+                "S": "v0#schema"
+            },
+            "created_at": {
+                "S": "2021-10-24 12:12:15.906723"
+            },
+            "schema": {
+                "S": "{\"Table\":{}}"
+            },
+            "updated_at": {
+                "S": "2021-10-24 12:35:12.934105"
+            }
+        }
+    ],
+    "Count": 31,
+    "ScannedCount": 31,
+    "@metadata": {
+        "statusCode": 200,
+        "effectiveUri": "http:\/\/scylla-m:8000",
+        "headers": {
+            "content-length": "462022",
+            "content-type": "application\/json",
+            "date": "Sun, 24 Oct 2021 12:42:15 GMT",
+            "server": "Seastar httpd"
+        },
+        "transferStats": {
+            "http": [
+                []
+            ]
+        }
+    }
+}
