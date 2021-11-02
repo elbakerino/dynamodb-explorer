@@ -32,10 +32,13 @@ class TokenRefresh implements RequestHandlerInterface {
      * @throws \JsonException
      */
     public function handle(ServerRequestInterface $request): ResponseInterface {
-        if(!$this->isAuthorized($request)) {
-            return (new Response(['error' => 'not authenticated']))->json(401);
+        if(!$this->isAuthenticated($request)) {
+            return (new Response([
+                'error' => 'not authenticated',
+                'details' => $this->getAuthError($request),
+            ]))->json(401);
         }
-        $user = $this->getUser($request);
+        $user = $this->getAuthUser($request);
 
         return (new Response([
             'token' => $this->auth->createToken($user),

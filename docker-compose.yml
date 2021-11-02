@@ -13,6 +13,7 @@ services:
       DYNAMO_DB_KEY: key
       DYNAMO_DB_SECRET: secret
       DYNAMO_DB_ENDPOINT: http://scylla-m:8000
+      AUTH_EXPIRE: 14400
     volumes:
       - ./:/var/www/html
 

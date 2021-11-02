@@ -233,6 +233,10 @@ class TableRepository {
                     $data['example_items'] = json_decode($data['example_items'], false, 512, JSON_THROW_ON_ERROR);
                 }
                 $table[substr($data['data_key'], 3)] = $data;
+            } else if(strpos($data['data_key'], 'v0#entity#') === 0) {
+                //$table['entities'][] = $data;
+                // todo: support many entities views in the future
+                $table['entities'] = $data;
             } else if(strpos($data['data_key'], 'shared#') === 0) {
                 $shares[] = $data;
             }
@@ -303,6 +307,43 @@ TXT
                 ];
             }
 
+            if(isset($data['entities'])) {
+                $ops[] = [
+                    'TableName' => $this->table,
+                    'Key' => [
+                        'uuid' => ['S' => 'table#' . $uuid],
+                        'data_key' => ['S' => 'v0#entity#definition#default'],
+                    ],
+                    'UpdateExpression' => <<<TXT
+SET
+    #created_at = if_not_exists(created_at, :val__updated_at),
+    #updated_at = :val__updated_at,
+    entity_definitions = :val__entity_definitions,
+    flow_cards = :val__flow_cards,
+    flow_view = :val__flow_view,
+    flow_connections = :val__flow_connections,
+    flow_layers = :val__flow_layers
+TXT
+                    ,
+                    'ExpressionAttributeNames' => [
+                        '#created_at' => 'created_at',
+                        '#updated_at' => 'updated_at',
+                    ],
+                    'ExpressionAttributeValues' => [
+                        ':val__updated_at' => ['S' => $ts],
+                        ':val__entity_definitions' => $this->dynamo->parseArrayElement($data['entities']->entity_definitions),
+                        ':val__flow_cards' => $this->dynamo->parseArrayElement($data['entities']->flow_cards),
+                        ':val__flow_view' => $this->dynamo->parseArrayElement($data['entities']->flow_view),
+                        ':val__flow_connections' =>
+                            ($data['entities']->flow_connections ?? null) ? $this->dynamo->parseArrayElement($data['entities']->flow_connections) : ['L' => []],
+                        ':val__flow_layers' =>
+                            ($data['entities']->flow_layers ?? null) ? $this->dynamo->parseArrayElement($data['entities']->flow_layers) : ['M' => []],
+                    ],
+                    // UPDATED_NEW
+                    'ReturnValues' => 'ALL_NEW',
+                ];
+            }
+
             if(isset($data['name'])) {
                 $ops[] = [
                     'TableName' => $this->table,
@@ -343,7 +384,13 @@ TXT
                 if(isset($updated['example_items'])) {
                     $updated['example_items'] = json_decode($updated['example_items'], false, 512, JSON_THROW_ON_ERROR);
                 }
-                $results[substr($updated['data_key'], 3)] = $updated;
+
+                if(strpos($updated['data_key'], 'v0#entity#') === 0) {
+                    // todo: support many entities views in the future
+                    $results['entities'] = $updated;
+                } else {
+                    $results[substr($updated['data_key'], 3)] = $updated;
+                }
             }
             return $results;
         } catch(DynamoDbException $e) {

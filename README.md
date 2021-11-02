@@ -36,6 +36,7 @@ docker run -it --rm -p 3333:80 \
     - `APP_SALT`
     - `AUTH_ISSUER`
     - `AUTH_SECRET`
+    - `AUTH_EXPIRE`, defaults to `3600`, how long an auth token is valid, in seconds
     - `DYNAMO_DB_KEY`
     - `DYNAMO_DB_SECRET`
     - `DYNAMO_DB_ENDPOINT=http://127.0.0.1:8001`, for usage with e.g. own public scylla endpoint, not needed for AWS

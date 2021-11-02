@@ -32,10 +32,10 @@ class UserProfile implements RequestHandlerInterface {
      * @throws \JsonException
      */
     public function handle(ServerRequestInterface $request): ResponseInterface {
-        if(!$this->isAuthorized($request)) {
+        if(!$this->isAuthenticated($request)) {
             return (new Response(['error' => 'not authenticated']))->json(401);
         }
-        $user = $this->getUser($request);
+        $user = $this->getAuthUser($request);
         $email = $request->getAttribute('email');
         if($user !== $email) {
             return (new Response(['error' => 'not authorized']))->json(401);

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1bbe6ab258a4904e8aa04d54fd4a6004",
+    "content-hash": "ed7e05cac62d61fcf9f586d69cdcb78b",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -3097,6 +3097,43 @@
                 "source": "https://github.com/scaleupstack/reflection/tree/v1.2.1"
             },
             "time": "2019-09-03T08:28:23+00:00"
+        },
+        {
+            "name": "simple-icons/simple-icons",
+            "version": "5.20.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/simple-icons/simple-icons.git",
+                "reference": "00b6fe7eca52b9df8a38b5e5b64fe9abe8580add"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/simple-icons/simple-icons/zipball/00b6fe7eca52b9df8a38b5e5b64fe9abe8580add",
+                "reference": "00b6fe7eca52b9df8a38b5e5b64fe9abe8580add",
+                "shasum": ""
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "CC0-1.0"
+            ],
+            "description": "SVG icons for popular brands",
+            "homepage": "https://simpleicons.org/",
+            "keywords": [
+                "icons",
+                "svg"
+            ],
+            "support": {
+                "issues": "https://github.com/simple-icons/simple-icons/issues",
+                "source": "https://github.com/simple-icons/simple-icons/tree/5.20.0"
+            },
+            "funding": [
+                {
+                    "url": "https://opencollective.com/simple-icons",
+                    "type": "open_collective"
+                }
+            ],
+            "time": "2021-10-24T09:52:05+00:00"
         },
         {
             "name": "symfony/deprecation-contracts",

@@ -2,14 +2,25 @@
 
 namespace App\Traits;
 
+use App\Services\AuthService;
+use DI\Annotation\Inject;
 use Psr\Http\Message\ServerRequestInterface;
 
 trait AuthChecker {
-    public function isAuthorized(ServerRequestInterface $request): bool {
+    /**
+     * @Inject()
+     */
+    protected AuthService $auth_service;
+
+    public function isAuthenticated(ServerRequestInterface $request): bool {
         return (bool)$request->getAttribute('authenticated');
     }
 
-    public function getUser(ServerRequestInterface $request): ?string {
+    public function getAuthUser(ServerRequestInterface $request): ?string {
         return $request->getAttribute('auth_payload')['uid'] ?? null;
+    }
+
+    public function getAuthError(ServerRequestInterface $request): ?string {
+        return $request->getAttribute('auth_reason');
     }
 }

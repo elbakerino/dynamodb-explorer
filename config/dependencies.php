@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 use function DI\autowire;
 use function DI\get;
@@ -79,6 +79,7 @@ return static function($config) {
                 ],
                 [
                     'Content-Type',
+                    'Cache-Control',
                     'Accept',
                     'AUTHORIZATION',
                     'X-Requested-With',
@@ -90,7 +91,9 @@ return static function($config) {
             ),
         App\Services\AuthService::class => autowire()
             ->constructorParameter('secret', $_ENV['AUTH_SECRET'])
-            ->constructorParameter('issuer', $_ENV['AUTH_ISSUER']),
+            ->constructorParameter('issuer', $_ENV['AUTH_ISSUER'])
+            ->constructorParameter('expire', $_ENV['AUTH_EXPIRE'] ? (int)$_ENV['AUTH_EXPIRE'] : 3600)
+            ->constructorParameter('table', $dyn_explorer_table),
         App\Repository\UserRepository::class => autowire()
             ->constructorParameter('table', $dyn_explorer_table)
             ->constructorParameter('app_salt', $_ENV['APP_SALT']),
@@ -98,5 +101,18 @@ return static function($config) {
             ->constructorParameter('table', $dyn_explorer_table),
         App\RouteHandler\ApiPing::class => autowire()
             ->constructorParameter('explorer_name', $_ENV['EXPLORER_NAME'] ?? 'Localhost Explorer'),
+        App\RouteHandler\IconApiList::class => autowire(),
+        App\Services\Icon1Service::class => autowire()
+            ->constructorParameter('providers', [
+                [
+                    'name' => 'Simple Icons',
+                    'id' => 'simple-icons',
+                    'list' => __DIR__ . '/../data/icons/simple-icons.json',
+                ], [
+                    'name' => 'Material UI',
+                    'id' => 'material-ui',
+                    'list' => __DIR__ . '/../data/icons/material-ui.json',
+                ]
+            ]),
     ];
 };

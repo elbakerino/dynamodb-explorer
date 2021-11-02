@@ -28,10 +28,10 @@ class TablesList implements RequestHandlerInterface {
      * @throws \JsonException
      */
     public function handle(ServerRequestInterface $request): ResponseInterface {
-        if(!$this->isAuthorized($request)) {
+        if(!$this->isAuthenticated($request)) {
             return (new Response(['error' => 'not authenticated']))->json(401);
         }
-        $user = $this->getUser($request);
+        $user = $this->getAuthUser($request);
         $tables = $this->repository->listForUser($user, 'asc', 25);
         return (new Response([
             'tables' => $tables,

@@ -24,7 +24,7 @@ class Home implements RequestHandlerInterface {
         <span style="display: inline-flex; align-items: center;">DynamoDB Explorer</span>
     </h2>
     <p>
-        API endpoints for the <a
+        API for <a
             href="https://github.com/elbakerino/dynamodb-visualizer" target="_blank"
             style="display: inline-flex; align-items: center; color: #d5d5d5;"
         >DynamoDB Visualizer</a>.
