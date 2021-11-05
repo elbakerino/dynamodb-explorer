@@ -2,8 +2,10 @@
 
 namespace App\Repository;
 
-use App\Services\DynamoService;
+use Bemit\DynamoDB\DynamoService;
 use Aws\DynamoDb\Exception\DynamoDbException;
+use Bemit\DynamoDB\InvalidItemTypeException;
+use Bemit\DynamoDB\InvalidTypeException;
 use Ramsey\Uuid\Uuid;
 
 class TableRepository {
@@ -48,7 +50,7 @@ class TableRepository {
      * @throws \JsonException
      */
     protected function hydrate($item): array {
-        $assoc_item = $this->dynamo->itemToArray($item);
+        $assoc_item = $this->dynamo->fromItem($item);
         $assoc_item['uuid'] = substr($assoc_item['uuid'], strlen('table#'));
         return $assoc_item;
     }
@@ -58,9 +60,9 @@ class TableRepository {
      */
     public function create(string $name, string $user): array {
         $table_raw = $this->makeTable($name);
-        $item = $this->dynamo->arrayToItem($table_raw);
+        $item = $this->dynamo->toItem($table_raw);
         $shared_raw = $this->makeTableShare($table_raw['uuid'], $user, 'owner');
-        $shared_item = $this->dynamo->arrayToItem($shared_raw);
+        $shared_item = $this->dynamo->toItem($shared_raw);
         try {
             $response = $this->dynamo->client()->putItem([
                 'TableName' => $this->table,
@@ -120,7 +122,7 @@ class TableRepository {
 //        $share_response = [
 //            'size' => (int)$res->offsetGet('@metadata')['headers']['content-length'],
 //            'per_page' => $per_page,
-//            'last_evaluated_key' => $res->offsetGet('LastEvaluatedKey') ? $this->dynamo->itemToArray($res->offsetGet('LastEvaluatedKey')) : null,
+//            'last_evaluated_key' => $res->offsetGet('LastEvaluatedKey') ? $this->dynamo->fromItem($res->offsetGet('LastEvaluatedKey')) : null,
 //            //'items' => array_map(fn($item) => $this->hydrate($item), $items),
 //        ];
 
@@ -331,13 +333,13 @@ TXT
                     ],
                     'ExpressionAttributeValues' => [
                         ':val__updated_at' => ['S' => $ts],
-                        ':val__entity_definitions' => $this->dynamo->parseArrayElement($data['entities']->entity_definitions),
-                        ':val__flow_cards' => $this->dynamo->parseArrayElement($data['entities']->flow_cards),
-                        ':val__flow_view' => $this->dynamo->parseArrayElement($data['entities']->flow_view),
+                        ':val__entity_definitions' => $this->dynamo->toItemValue($data['entities']->entity_definitions),
+                        ':val__flow_cards' => $this->dynamo->toItemValue($data['entities']->flow_cards),
+                        ':val__flow_view' => $this->dynamo->toItemValue($data['entities']->flow_view),
                         ':val__flow_connections' =>
-                            ($data['entities']->flow_connections ?? null) ? $this->dynamo->parseArrayElement($data['entities']->flow_connections) : ['L' => []],
+                            ($data['entities']->flow_connections ?? null) ? $this->dynamo->toItemValue($data['entities']->flow_connections) : ['L' => []],
                         ':val__flow_layers' =>
-                            ($data['entities']->flow_layers ?? null) ? $this->dynamo->parseArrayElement($data['entities']->flow_layers) : ['M' => []],
+                            ($data['entities']->flow_layers ?? null) ? $this->dynamo->toItemValue($data['entities']->flow_layers) : ['M' => []],
                     ],
                     // UPDATED_NEW
                     'ReturnValues' => 'ALL_NEW',
@@ -377,7 +379,7 @@ TXT
                 if(!isset($res['Attributes'])) {
                     continue;
                 }
-                $updated = $this->dynamo->itemToArray($res['Attributes']);
+                $updated = $this->dynamo->fromItem($res['Attributes']);
                 if(isset($updated['schema'])) {
                     $updated['schema'] = json_decode($updated['schema'], false, 512, JSON_THROW_ON_ERROR);
                 }
@@ -429,7 +431,7 @@ TXT
             ];
 
             $res = $this->dynamo->client()->updateItem($op)->toArray();
-            $updated = $this->dynamo->itemToArray($res['Attributes']);
+            $updated = $this->dynamo->fromItem($res['Attributes']);
             if(isset($updated['display_keys'])) {
                 $updated['display_keys'] = json_decode($updated['display_keys'], false, 512, JSON_THROW_ON_ERROR);
             }
@@ -478,7 +480,7 @@ TXT
             ];
 
             $res = $this->dynamo->client()->updateItem($op)->toArray();
-            $updated = $this->dynamo->itemToArray($res['Attributes']);
+            $updated = $this->dynamo->fromItem($res['Attributes']);
             if(isset($updated['color_pk'])) {
                 $updated['color_pk'] = json_decode($updated['color_pk'], false, 512, JSON_THROW_ON_ERROR);
             }

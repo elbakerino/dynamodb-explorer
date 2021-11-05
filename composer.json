@@ -24,7 +24,8 @@
         "aws/aws-sdk-php-resources": "^0.3.0",
         "ramsey/uuid": "^4.2",
         "rbdwllr/reallysimplejwt": "^4.0",
-        "simple-icons/simple-icons": "^5.20"
+        "simple-icons/simple-icons": "^5.20",
+        "bemit/dynamodb": "~0.0.2"
     },
     "require-dev": {
         "roave/security-advisories": "dev-master",

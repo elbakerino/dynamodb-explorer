@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use Bemit\DynamoDB\DynamoService;
 use ReallySimpleJWT\Decode;
 use ReallySimpleJWT\Jwt;
 use ReallySimpleJWT\Parse;
@@ -79,7 +80,7 @@ class AuthService {
         if(!$item_res) {
             throw new \RuntimeException('AuthService requested share not found');
         }
-        return $this->dynamo->itemToArray($item_res)['shared_level'];
+        return $this->dynamo->fromItem($item_res)['shared_level'];
     }
 
     public function requireAccessLevel(string $user, string $object_id, string $access_level_required) {

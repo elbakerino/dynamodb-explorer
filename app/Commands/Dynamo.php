@@ -2,7 +2,7 @@
 
 namespace App\Commands;
 
-use App\Services\DynamoService;
+use Bemit\DynamoDB\DynamoService;
 use Aws\DynamoDb\Exception\DynamoDbException;
 use DI\Annotation\Inject;
 use Psr\Log\LoggerInterface;
@@ -169,7 +169,7 @@ class Dynamo {
             return [
                 'PutRequest' => [
                     'TableName' => $table_id,
-                    'Item' => $this->dynamo->arrayToItem($row_raw),
+                    'Item' => $this->dynamo->toItem($row_raw),
                 ],
             ];
         }, $rows_raw['items']);

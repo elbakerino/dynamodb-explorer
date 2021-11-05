@@ -2,7 +2,7 @@
 
 namespace App\RouteHandler;
 
-use App\Services\DynamoService;
+use Bemit\DynamoDB\DynamoService;
 use DI\Annotation\Inject;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;

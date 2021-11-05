@@ -2,7 +2,7 @@
 
 namespace App\Repository;
 
-use App\Services\DynamoService;
+use Bemit\DynamoDB\DynamoService;
 use Aws\DynamoDb\Exception\DynamoDbException;
 
 class UserRepository {
@@ -47,7 +47,7 @@ class UserRepository {
      * @throws \JsonException
      */
     protected function hydrate($item): array {
-        $assoc_item = $this->dynamo->itemToArray($item);
+        $assoc_item = $this->dynamo->fromItem($item);
         return $assoc_item;
     }
 
@@ -56,7 +56,7 @@ class UserRepository {
      */
     public function create(string $email, string $password): array {
         $user_raw = $this->makeUser($email, $password);
-        $item = $this->dynamo->arrayToItem($user_raw);
+        $item = $this->dynamo->toItem($user_raw);
         try {
             $response = $this->dynamo->client()->putItem([
                 'TableName' => $this->table,
@@ -198,7 +198,7 @@ TXT
                 if(!isset($res['Attributes'])) {
                     continue;
                 }
-                $updated = $this->dynamo->itemToArray($res['Attributes']);
+                $updated = $this->dynamo->fromItem($res['Attributes']);
                 if(isset($updated['passcheck'])) {
                     unset($updated['passcheck']);
                 }

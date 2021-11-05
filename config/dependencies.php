@@ -66,7 +66,7 @@ return static function($config) {
         // App Stuff
         App\Commands\Dynamo::class => autowire()
             ->constructorParameter('table_dir', __DIR__ . '/../sql'),
-        App\Services\DynamoService::class => autowire()
+        Bemit\DynamoDB\DynamoService::class => autowire()
             ->constructorParameter('region', $_ENV['DYNAMO_DB_REGION'] ?? 'eu-central-1')
             ->constructorParameter('dynamo_key', $_ENV['DYNAMO_DB_KEY'])
             ->constructorParameter('dynamo_secret', $_ENV['DYNAMO_DB_SECRET'])
